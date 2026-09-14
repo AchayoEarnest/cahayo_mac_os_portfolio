@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { useWindowStore, AppId } from "@/store/windowStore";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { User, Rocket, Terminal, NotebookText, Mail, Trash2, type LucideIcon } from "lucide-react";
+import { User, Rocket, Terminal, Briefcase, Mail, Trash2, type LucideIcon } from "lucide-react";
 import clsx from "clsx";
 
 interface DockApp {
@@ -18,7 +18,7 @@ const DOCK_APPS: DockApp[] = [
   { id: "about",      label: "About Me",   icon: User,         gradient: "from-sky-400 to-blue-600" },
   { id: "projects",   label: "Projects",   icon: Rocket,       gradient: "from-fuchsia-500 to-purple-600" },
   { id: "skills",     label: "Terminal",   icon: Terminal,     gradient: "from-slate-600 to-slate-900" },
-  { id: "experience", label: "Experience", icon: NotebookText, gradient: "from-amber-400 to-orange-600" },
+  { id: "experience", label: "Experience", icon: Briefcase,    gradient: "from-amber-400 to-orange-600" },
   { id: "contact",    label: "Contact",    icon: Mail,         gradient: "from-indigo-500 to-blue-700" },
 ];
 
@@ -92,8 +92,8 @@ function DockItem({ app, mouseX, isMobile }: { app: DockApp; mouseX: ReturnType<
       >
         <DockIconShell gradient={app.gradient} sizeClass={sizeClass} isDark={isDark}>
           <Icon
-            size={isMobile ? 22 : 26}
-            strokeWidth={2}
+            size={isMobile ? 24 : 29}
+            strokeWidth={2.25}
             className="text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.4)]"
           />
         </DockIconShell>
@@ -168,13 +168,13 @@ export function Dock() {
         >
           <div className="relative flex items-center justify-center cursor-pointer">
             <DockIconShell
-              gradient="from-slate-400 to-slate-600"
+              gradient="from-slate-300 to-slate-500"
               sizeClass={isMobile ? "w-12 h-12 rounded-[26%]" : "w-14 h-14 rounded-[24%]"}
               isDark={isDark}
             >
               <Trash2
-                size={isMobile ? 20 : 24}
-                strokeWidth={2}
+                size={isMobile ? 22 : 27}
+                strokeWidth={2.25}
                 className="text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.4)]"
               />
             </DockIconShell>
