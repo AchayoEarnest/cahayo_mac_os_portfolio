@@ -36,11 +36,18 @@ export function ContactWindow() {
   const handleSend = () => {
     if (!form.from || !form.body) return;
     setSending(true);
+
+    const subject = form.subject || `Portfolio message from ${form.from}`;
+    const body = `${form.body}\n\n— Reply to: ${form.from}`;
+    const mailtoUrl = `mailto:${PORTFOLIO.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
     setTimeout(() => {
+      window.location.href = mailtoUrl;
       setSending(false);
       setSent(true);
       setForm({ from: "", subject: "", body: "" });
-    }, 1500);
+      setTimeout(() => setSent(false), 4000);
+    }, 500);
   };
 
   const SIDEBAR_ITEMS = [
@@ -186,6 +193,7 @@ export function ContactWindow() {
                   <div className={clsx("flex items-center gap-2 pb-2 border-b", borderColor)}>
                     <span className={clsx("text-xs font-medium w-12 flex-shrink-0", textMuted)}>From:</span>
                     <input
+                      type="email"
                       value={form.from}
                       onChange={(e) => setForm({ ...form, from: e.target.value })}
                       placeholder="your@email.com"
@@ -220,7 +228,7 @@ export function ContactWindow() {
                     {sent ? (
                       <motion.div key="sent" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}
                         className="flex items-center gap-2 text-green-400 text-sm">
-                        <CheckSendIcon /> Message sent! 
+                        <CheckSendIcon /> Opening your email client…
                       </motion.div>
                     ) : (
                       <motion.button key="send" onClick={handleSend} disabled={sending || !form.from || !form.body}
@@ -230,7 +238,7 @@ export function ContactWindow() {
                             <Send size={14} />
                           </motion.div>
                         ) : <Send size={14} />}
-                        {sending ? "Sending..." : "Send"}
+                        {sending ? "Preparing..." : "Send"}
                       </motion.button>
                     )}
                   </AnimatePresence>

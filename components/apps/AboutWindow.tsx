@@ -5,12 +5,11 @@ import { motion } from "framer-motion";
 import { Window } from "@/components/Window";
 import { useWindowStore } from "@/store/windowStore";
 import { PORTFOLIO } from "@/lib/portfolio";
-import { Github, Linkedin, Mail, MapPin, Download, ChevronRight } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Download } from "lucide-react";
 import clsx from "clsx";
 
 const SIDEBAR_ITEMS = [
-  { icon: "⭐", label: "Favorites", section: "overview", color: "#FFD60A" },
-  { icon: "📁", label: "Desktop",   section: "overview", color: "#007AFF" },
+  { icon: "⭐", label: "Overview",  section: "overview", color: "#FFD60A" },
   { icon: "📄", label: "Summary",   section: "summary",  color: "#34C759" },
   { icon: "🎓", label: "Education", section: "education", color: "#FF9F0A" },
   { icon: "🏆", label: "Certs",     section: "certs",    color: "#BF5AF2" },
@@ -24,7 +23,6 @@ export function AboutWindow() {
   const p = PORTFOLIO;
 
   const sidebarBg = isDark ? "bg-[#252528] border-r border-white/6" : "bg-[#f0f0f0] border-r border-black/8";
-  const textPrimary = isDark ? "text-white" : "text-gray-900";
   const textMuted = isDark ? "text-white/50" : "text-gray-500";
 
   return (
@@ -101,7 +99,10 @@ function OverviewSection({ isDark, p }: { isDark: boolean; p: typeof PORTFOLIO }
               (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(p.name)}&size=96&background=6366f1&color=fff&bold=true`;
             }}
           />
-          <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-[#1e1e20] flex items-center justify-center">
+          <div className={clsx(
+            "absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 flex items-center justify-center",
+            isDark ? "border-[#1e1e20]" : "border-white"
+          )}>
             <div className="w-2 h-2 bg-white rounded-full" />
           </div>
         </div>
@@ -115,21 +116,33 @@ function OverviewSection({ isDark, p }: { isDark: boolean; p: typeof PORTFOLIO }
           </div>
 
           {/* Social links */}
-          <div className="flex items-center gap-2 mt-3">
+          <div className="flex items-center gap-2 mt-3 flex-wrap">
             <a href={p.github} target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/15 text-white/80 transition-colors">
+              className={clsx(
+                "flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full transition-colors",
+                isDark ? "bg-white/10 hover:bg-white/15 text-white/80" : "bg-gray-900/8 hover:bg-gray-900/15 text-gray-700"
+              )}>
               <Github size={12} /> GitHub
             </a>
             <a href={p.linkedin} target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-blue-600/30 hover:bg-blue-600/50 text-blue-300 transition-colors">
+              className={clsx(
+                "flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full transition-colors",
+                isDark ? "bg-blue-600/30 hover:bg-blue-600/50 text-blue-300" : "bg-blue-600/10 hover:bg-blue-600/20 text-blue-600"
+              )}>
               <Linkedin size={12} /> LinkedIn
             </a>
             <a href={`mailto:${p.email}`}
-              className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-green-600/30 hover:bg-green-600/50 text-green-300 transition-colors">
+              className={clsx(
+                "flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full transition-colors",
+                isDark ? "bg-green-600/30 hover:bg-green-600/50 text-green-300" : "bg-green-600/10 hover:bg-green-600/20 text-green-700"
+              )}>
               <Mail size={12} /> Email
             </a>
             <a href={p.cvLink} target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-purple-600/30 hover:bg-purple-600/50 text-purple-300 transition-colors">
+              className={clsx(
+                "flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full transition-colors",
+                isDark ? "bg-purple-600/30 hover:bg-purple-600/50 text-purple-300" : "bg-purple-600/10 hover:bg-purple-600/20 text-purple-700"
+              )}>
               <Download size={12} /> CV
             </a>
           </div>

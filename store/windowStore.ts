@@ -8,6 +8,7 @@ export interface WindowState {
   id: AppId;
   isOpen: boolean;
   isMinimized: boolean;
+  isMaximized: boolean;
   isFocused: boolean;
   position: { x: number; y: number };
   zIndex: number;
@@ -23,6 +24,7 @@ interface WindowStore {
   closeWindow: (id: AppId) => void;
   minimizeWindow: (id: AppId) => void;
   focusWindow: (id: AppId) => void;
+  toggleMaximize: (id: AppId) => void;
   setPosition: (id: AppId, position: { x: number; y: number }) => void;
   toggleTheme: () => void;
   setBootComplete: () => void;
@@ -40,6 +42,7 @@ const makeWindow = (id: AppId, zIndex: number): WindowState => ({
   id,
   isOpen: false,
   isMinimized: false,
+  isMaximized: false,
   isFocused: false,
   position: DEFAULT_POSITIONS[id],
   zIndex,
@@ -85,7 +88,7 @@ export const useWindowStore = create<WindowStore>((set, get) => ({
     set((state) => ({
       windows: {
         ...state.windows,
-        [id]: { ...state.windows[id], isOpen: false, isMinimized: false, isFocused: false },
+        [id]: { ...state.windows[id], isOpen: false, isMinimized: false, isMaximized: false, isFocused: false },
       },
     }));
   },
@@ -112,6 +115,15 @@ export const useWindowStore = create<WindowStore>((set, get) => ({
             .filter((k) => k !== id)
             .map((k) => [k, { ...state.windows[k], isFocused: false }])
         ),
+      },
+    }));
+  },
+
+  toggleMaximize: (id) => {
+    set((state) => ({
+      windows: {
+        ...state.windows,
+        [id]: { ...state.windows[id], isMaximized: !state.windows[id].isMaximized },
       },
     }));
   },

@@ -45,11 +45,11 @@ export function MenuBar() {
           <span className="text-xs font-semibold">Cahayo OS</span>
         </div>
 
-        <span className={`text-xs font-semibold menubar-item ${isDark ? "text-white" : "text-black"}`}>
+        <span className={`hidden sm:inline text-xs font-semibold menubar-item ${isDark ? "text-white" : "text-black"}`}>
           Finder
         </span>
         {["File", "Edit", "View", "Go", "Window", "Help"].map((item) => (
-          <span key={item} className={`menubar-item text-xs ${isDark ? "text-white/80" : "text-black/80"}`}>
+          <span key={item} className={`hidden md:inline menubar-item text-xs ${isDark ? "text-white/80" : "text-black/80"}`}>
             {item}
           </span>
         ))}
@@ -58,7 +58,7 @@ export function MenuBar() {
       {/* Right side — system icons */}
       <div className="flex items-center gap-2">
         {/* System icons */}
-        <div className="flex items-center gap-3 mr-2">
+        <div className="hidden sm:flex items-center gap-3 mr-2">
           <Wifi size={13} className="opacity-70" />
           <Volume2 size={13} className="opacity-70" />
           <Battery size={13} className="opacity-70" />
@@ -75,7 +75,7 @@ export function MenuBar() {
 
         {/* Clock */}
         <div className="flex items-center gap-2 menubar-item text-xs">
-          <span className="opacity-70">{date}</span>
+          <span className="hidden sm:inline opacity-70">{date}</span>
           <span className="font-medium tabular-nums">{time}</span>
         </div>
       </div>

@@ -80,6 +80,15 @@ export const PORTFOLIO = {
 
   projects: [
     {
+      title: "Hospital & Clinic Analytics Platform",
+      description:
+        "Full-stack analytics platform surfacing real-time utilization and care-delivery KPIs for hospital and clinic operations teams.",
+      tools: ["Next.js", "TypeScript", "Tailwind CSS"],
+      github: "https://github.com/AchayoEarnest/DAAS",
+      color: "#ef4444",
+      icon: "🏥",
+    },
+    {
       title: "Health Program KPI Dashboard",
       description:
         "Power BI dashboard tracking 25+ KPIs with automated refresh for real-time program monitoring and leadership reporting.",
@@ -89,20 +98,20 @@ export const PORTFOLIO = {
       icon: "📊",
     },
     {
-      title: "Data Quality Automation Pipeline",
+      title: "Data Quality Assessment Tool",
       description:
-        "Python-based ETL pipeline for automated data validation, cleaning, and quality assurance across multiple data sources.",
-      tools: ["Python", "Pandas", "SQL", "Automation"],
-      github: "https://github.com/AchayoEarnest",
+        "Django web application for automated data quality assessments — validation checks, completeness scoring, and reporting across facility-level datasets.",
+      tools: ["Python", "Django", "Data Quality"],
+      github: "https://github.com/AchayoEarnest/chs_data_quality_assessment_tool",
       color: "#6366f1",
       icon: "⚙️",
     },
     {
-      title: "M&E Data Collection System",
+      title: "Community Intervention Tracker",
       description:
-        "Google App Scripts automated reporting system for seamless data collection, validation, and reporting workflows.",
-      tools: ["Google App Scripts", "JavaScript", "Data Management"],
-      github: "https://github.com/AchayoEarnest",
+        "Django REST application for tracking community-based interventions and service delivery data for adolescent girls and young women.",
+      tools: ["Django", "PostgreSQL", "REST API"],
+      github: "https://github.com/AchayoEarnest/community_intervention_app",
       color: "#f59e0b",
       icon: "📋",
     },
@@ -116,12 +125,22 @@ export const PORTFOLIO = {
       icon: "📈",
     },
     {
-      title: "Learnflow LMS",
-      description: "Complete Learning Management System with full-stack architecture and containerized deployment.",
-      tools: ["Erlang", "Next.js", "Docker"],
-      github: "https://github.com/AchayoEarnest/learnflow.git",
-      color: "#32ADE6",
-      icon: "🎓",
+      title: "Kenest Hotel Management System",
+      description:
+        "Full-stack hotel management system with an Elixir/Phoenix backend and Next.js frontend, covering bookings, rooms, and billing.",
+      tools: ["Elixir", "Phoenix", "Next.js"],
+      github: "https://github.com/AchayoEarnest/kenest-hotel-hms",
+      color: "#8b5cf6",
+      icon: "🏨",
+    },
+    {
+      title: "Afya Provider Portal",
+      description:
+        "Healthcare provider portal built as an Elixir/Phoenix + Next.js monorepo for managing patient records and service workflows.",
+      tools: ["Elixir", "Phoenix", "Next.js"],
+      github: "https://github.com/AchayoEarnest/afya-provider-portal-web",
+      color: "#10b981",
+      icon: "🩺",
     },
   ],
 

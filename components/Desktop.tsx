@@ -29,6 +29,22 @@ export function Desktop() {
     }
   }, [bootComplete, openWindow]);
 
+  // Escape closes the focused (frontmost) window
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      const state = useWindowStore.getState();
+      const open = (Object.values(state.windows) as (typeof state.windows)[keyof typeof state.windows][]).filter(
+        (w) => w.isOpen && !w.isMinimized
+      );
+      if (open.length === 0) return;
+      const target = open.find((w) => w.isFocused) ?? open.reduce((a, b) => (a.zIndex > b.zIndex ? a : b));
+      state.closeWindow(target.id);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
+
   return (
     <div className={isDark ? "dark" : ""} style={{ width: "100vw", height: "100vh", overflow: "hidden", position: "relative" }}>
       {/* Boot screen */}

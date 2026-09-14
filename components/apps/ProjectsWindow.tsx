@@ -34,13 +34,13 @@ export function ProjectsWindow() {
       <div className="flex flex-col h-full">
         {/* Browser toolbar */}
         <div className={clsx("flex items-center gap-2 px-3 py-2 flex-shrink-0", toolbarBg)}>
-          <button className={clsx("p-1 rounded hover:bg-white/10 transition-colors", textMuted)}>
+          <button className={clsx("p-1 rounded transition-colors", textMuted, isDark ? "hover:bg-white/10" : "hover:bg-black/8")}>
             <ChevronLeft size={14} />
           </button>
-          <button className={clsx("p-1 rounded hover:bg-white/10 transition-colors", textMuted)}>
+          <button className={clsx("p-1 rounded transition-colors", textMuted, isDark ? "hover:bg-white/10" : "hover:bg-black/8")}>
             <ChevronRight size={14} />
           </button>
-          <button className={clsx("p-1 rounded hover:bg-white/10 transition-colors", textMuted)}>
+          <button className={clsx("p-1 rounded transition-colors", textMuted, isDark ? "hover:bg-white/10" : "hover:bg-black/8")}>
             <RotateCw size={14} />
           </button>
 
@@ -52,13 +52,13 @@ export function ProjectsWindow() {
         </div>
 
         {/* Tab bar */}
-        <div className={clsx("flex items-end gap-1 px-3 pt-1.5", toolbarBg)}>
+        <div className={clsx("flex items-end gap-1 px-3 pt-1.5 overflow-x-auto window-scroll", toolbarBg)}>
           {projects.map((p, i) => (
             <button
               key={p.title}
               onClick={() => setSelected(i)}
               className={clsx(
-                "px-3 py-1.5 text-xs rounded-t-lg border border-b-0 transition-colors max-w-32 truncate",
+                "px-3 py-1.5 text-xs rounded-t-lg border border-b-0 transition-colors max-w-32 truncate flex-shrink-0",
                 selected === i
                   ? isDark
                     ? "bg-[#1e1e20] border-white/8 text-white"
