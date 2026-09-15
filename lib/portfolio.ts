@@ -6,7 +6,7 @@ export const PORTFOLIO = {
   phone: ["0111486539", "0739536402"],
   location: "Kenya",
   github: "https://github.com/AchayoEarnest",
-  linkedin: "https://linkedin.com/in/earnest-achayo",
+  linkedin: "https://www.linkedin.com/in/earnest-achayo-3a8295244",
   avatar: "https://images.pexels.com/photos/37094968/pexels-photo-37094968.jpeg",
   cvLink: "https://drive.google.com/file/d/1pqMP4CdC_ClKl9JhIqAXoa090_LDAgZ-/view",
 
