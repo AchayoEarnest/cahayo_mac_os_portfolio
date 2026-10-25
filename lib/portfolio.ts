@@ -142,6 +142,16 @@ export const PORTFOLIO = {
       color: "#10b981",
       icon: "🩺",
     },
+    {
+      title: "Cahayo Rush",
+      description:
+        "Arcade racing game for the browser — a pseudo-3D highway with traffic, near-miss combos, power-ups and a daily challenge. Every sprite and sound is generated in code.",
+      tools: ["React", "TypeScript", "Canvas 2D"],
+      github: "https://github.com/AchayoEarnest",
+      live: "https://cahayo-rush.vercel.app",
+      color: "#d946ef",
+      icon: "🏎️",
+    },
   ],
 
   certifications: [

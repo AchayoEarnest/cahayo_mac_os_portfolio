@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Window } from "@/components/Window";
 import { useWindowStore } from "@/store/windowStore";
 import { PORTFOLIO } from "@/lib/portfolio";
-import { ChevronLeft, ChevronRight, RotateCw, Lock, ExternalLink, Github } from "lucide-react";
+import { ChevronLeft, ChevronRight, RotateCw, Lock, ExternalLink, Github, Play } from "lucide-react";
 import clsx from "clsx";
 
 const FAKE_URL = "https://cahayo.dev/projects";
@@ -182,11 +182,23 @@ export function ProjectsWindow() {
                         ))}
                       </div>
 
-                      <a href={p.github} target="_blank" rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-white transition-opacity hover:opacity-80"
-                        style={{ background: p.color }}>
-                        <Github size={15} /> View on GitHub <ExternalLink size={12} />
-                      </a>
+                      <div className="flex flex-wrap gap-2">
+                        {p.live && (
+                          <a href={p.live} target="_blank" rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-white transition-opacity hover:opacity-80"
+                            style={{ background: p.color }}>
+                            <Play size={15} /> Play live <ExternalLink size={12} />
+                          </a>
+                        )}
+                        <a href={p.github} target="_blank" rel="noopener noreferrer"
+                          className={clsx(
+                            "inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-opacity hover:opacity-80",
+                            p.live ? textPrimary : "text-white"
+                          )}
+                          style={p.live ? { border: `1px solid ${p.color}60` } : { background: p.color }}>
+                          <Github size={15} /> View on GitHub <ExternalLink size={12} />
+                        </a>
+                      </div>
                     </div>
                   );
                 })()}
