@@ -152,6 +152,15 @@ export const PORTFOLIO = {
       color: "#d946ef",
       icon: "🏎️",
     },
+    {
+      title: "VetLink Africa",
+      description:
+        "Veterinary practice platform for Kenya — find verified vets by distance, book clinic, home or farm visits, keep each animal's health record in one timeline, and write SOAP visit reports.",
+      tools: ["Next.js", "Elixir", "Phoenix", "PostGIS"],
+      github: "https://github.com/AchayoEarnest",
+      color: "#047857",
+      icon: "🐾",
+    },
   ],
 
   certifications: [
